@@ -4,7 +4,7 @@ import config from './config';
 import locationController from './controller';
 import service from './service';
 
-let user = angular.module('tiy.location', []);
+let location = angular.module('tiy.location', []);
 
 location.config(config);
 location.controller('LocationController', locationController);

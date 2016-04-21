@@ -10,7 +10,7 @@ import location from './modules/location';
 let App = angular.module('app', [
   'ui.router',
   'firebase',
-  'tiy.locaion',
+  'tiy.location',
   'tiy.user'
 ]);
 
