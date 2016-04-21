@@ -1,9 +1,9 @@
 function config($stateProvider) {
   $stateProvider
   .state("location", {
-    url:"/",
+    url:"/location",
     controller: "LocationController as locationCtrl",
-    template: require("./view.html")
+    template: require("./location.html")
   })
 }
 
