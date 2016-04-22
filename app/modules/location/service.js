@@ -1,8 +1,6 @@
 class LocationService {
   constructor($q, $firebaseAuth) {
     this._$q = $q;
-
-    /* STEP 1 - ADD YOUR URL HERE */
     this.ref = new Firebase("https://30-register-login.firebaseio.com/");
     this.auth = $firebaseAuth(this.ref);
   }
@@ -10,7 +8,6 @@ class LocationService {
   isLoggedIn() {
     return this.auth.$requireAuth();
   }
-
 
   /* // Return an object representing a "new" location object with space for address, city, and state //*/
   new() {
