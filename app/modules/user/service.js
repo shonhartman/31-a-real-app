@@ -66,12 +66,10 @@ class UserService {
       })
       .then((response) => {
         this.user = response;
-        // redirect with $state.go
-        $state.go('login');
-
+        resolve(this.user);
       })
       .catch(function(error) {
-        console.error("Error: ", error)
+        reject(error);
       })
     });
   }
