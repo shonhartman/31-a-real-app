@@ -1,18 +1,26 @@
 class LocationController {
-  constructor() {
-    this.addresses = [ {
-        street: "",
-        city: "",
-        state: ""
-      }
-    ]
+  constructor(LocationService, UserService) {
+    this._UserService = UserService;
+    this._LocationService = LocationService;
+    this.location = LocationService.new();
 
-
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+    this._UserService
+    .isLoggedIn()
+      .then((response) => {
+        this.user = response;
+        this.locations = LocationService.login(response);
+      })
+      .catch((error) => {
+        this._$state.go("login");
       });
-    }
+
   }
+
+  addLocation() {
+    this._LocationService.addLocation(this.location);
+    this.location = this._LocationService.new();
+  }
+
 }
+
+export default LocationController;

@@ -1,16 +1,39 @@
 <div class="page-header">
-  <h1>Profile <small>{{ profileCtrl.user.password.email }}</small></h1>
-  <imput type="button" bvalue="Logout" ng-click="profileCtrl.logout()"></imput>
+  <h1>Locations <small>{{ locationCtrl.user.password.email }}</small></h1>
 </div>
 
 <div class="page-header">Location</div>
 
+<form class="form-horizontal" ng-submit="locationCtrl.location">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="1010 Main Street" ng-model="locationCtrl.location.street">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">City</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword3" placeholder="Little Rock" ng-model="locationCtrl.location.city">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">State</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Arkansas" ng-model="locationCtrl.location.state">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-click="locationCtrl.addLocation()">Submit</button>
+    </div>
+  </div>
+</form>
 
 <!-- MAP -------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-  <ng-map
-     center="address...">
-     <marker id="marker_{{ $index }}" ng-repeat="location in locationCtrl.addresses" position="{{ address.address }}"></marker>
+  <ng-map ng-if="locationCtrl.locations.length > 0"
+     center="{{ locationCtrl.locations[0].street }}, {{ locationCtrl.locations[0].city }}, {{ locationCtrl.locations[0].state }}">
+     <marker id="marker_{{ $index }}" ng-repeat="location in locationCtrl.locations" position="{{ location.street }}, {{ location.city }}, {{ location.state }}"></marker>
    </ng-map>
-
-   <ng-map center="{{ addresses[0].address }}"></ng-map>
